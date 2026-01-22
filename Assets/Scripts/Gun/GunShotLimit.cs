@@ -13,7 +13,7 @@ public class GunShotLimit : GunBase
     protected override IEnumerator ShootCoroutine()
     {
         if (_recharging) yield break;
-        
+
         while (true)
         {
             if (_currentShots < maxShots)
@@ -22,7 +22,11 @@ public class GunShotLimit : GunBase
                 _currentShots++;
                 CheckRecharge();
                 yield return new WaitForSeconds(timeBetweenShots);
-            }    
+            }
+            else
+            {
+                yield break;
+            }
         }
     }
 
