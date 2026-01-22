@@ -12,7 +12,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     {
         base.Init();
 
-        inputs.Gameplay.Shoot.performed += cts => StartShoot();
+        inputs.Gameplay.Shoot.performed += ctx => StartShoot();
         inputs.Gameplay.Shoot.canceled += ctx => CancelShoot();
     }
     

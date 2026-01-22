@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunShootLimit : GunBase
+public class GunShotLimit : GunBase
 {
     public float maxShots = 5f;
     public float timeToRecharge = 1f;
