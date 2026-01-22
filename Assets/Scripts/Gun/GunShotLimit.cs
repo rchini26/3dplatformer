@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GunShotLimit : GunBase
 {
-    public float maxShots = 5f;
+    public int maxShots = 5;
     public float timeToRecharge = 1f;
 
-    private float _currentShots;
+    private int _currentShots;
     private bool _recharging;
 
     protected override IEnumerator ShootCoroutine()
