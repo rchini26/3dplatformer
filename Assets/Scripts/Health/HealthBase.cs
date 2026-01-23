@@ -3,15 +3,15 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
-public class HealthBase : MonoBehaviour
+public class HealthBase : MonoBehaviour, IDamageable
 {
-    public Action OnKill;
+    public event Action OnKill;
     
     public int startLife = 10;
     public bool destroyOnKill;
     public float delayToKill = .5f;
     
-    private int _currentLife;
+    [SerializeField] private int _currentLife;
     private bool _isDead;
 
     void Awake()
@@ -21,14 +21,20 @@ public class HealthBase : MonoBehaviour
 
     void Init()
     {
+        ResetLife();
+    }
+
+    protected virtual void ResetLife()
+    {
         _isDead = false;
         _currentLife = startLife;
     }
-    public void Damage(int damage)
+    
+    public void Damage(int amount)
     {
         if(_isDead) return;
         
-        _currentLife -= damage;
+        _currentLife -= amount;
         
         if (_currentLife <= 0)
         {
