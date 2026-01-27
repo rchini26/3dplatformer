@@ -10,6 +10,9 @@ public class HealthBase : MonoBehaviour, IDamageable
     public int startLife = 10;
     public bool destroyOnKill;
     public float delayToKill = .5f;
+    public FlashColor flashColor;
+    public ParticleSystem particleSystemHit;
+    public ParticleSystem particleSystemDeath;
     
     [SerializeField] private int _currentLife;
     private bool _isDead;
@@ -35,10 +38,13 @@ public class HealthBase : MonoBehaviour, IDamageable
         if(_isDead) return;
         
         _currentLife -= amount;
+        if(flashColor != null) flashColor.Flash();
+        if (particleSystemHit != null) particleSystemHit.Emit(30);
         
         if (_currentLife <= 0)
         {
-            Kill();    
+            Kill();
+            if (particleSystemDeath != null) particleSystemDeath.Emit(30);
         }
     }
 
