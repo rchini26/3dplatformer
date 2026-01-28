@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5937349056267530457}
   - component: {fileID: 5937349056267530458}
   - component: {fileID: 5937349056267530459}
+  - component: {fileID: 7315257418920502255}
   m_Layer: 0
   m_Name: Enemy_02
   m_TagString: Untagged
@@ -103,6 +104,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.518738, y: 9.387079, z: 7.6868744}
   m_Center: {x: 0.1053772, y: 4.111863, z: -0.90530014}
+--- !u!114 &7315257418920502255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937349056267530469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3922bc28880ba8542b23bde5bb50be57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  healthBase: {fileID: 5937349056267530463}
+  collider: {fileID: 5937349056267530459}
+  timeToDestroy: 1
+  startAnimationDuration: 0.2
+  startAnimationEase: 27
+  startWithAnimation: 1
+  _animationBase: {fileID: 5937349056267530457}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  minDistance: 1
+  speed: 5
 --- !u!1001 &5937349054750388559
 PrefabInstance:
   m_ObjectHideFlags: 0
