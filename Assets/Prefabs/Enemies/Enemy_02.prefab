@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5937349056267530468}
   - component: {fileID: 5937349056267530463}
-  - component: {fileID: 5937349056267530456}
   - component: {fileID: 5937349056267530457}
   - component: {fileID: 5937349056267530458}
   - component: {fileID: 5937349056267530459}
@@ -56,26 +55,6 @@ MonoBehaviour:
   particleSystemHit: {fileID: 0}
   particleSystemDeath: {fileID: 1184654436387733103}
   _currentLife: 0
---- !u!114 &5937349056267530456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5937349056267530469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac168bcbb48b3b4bb2af34dc180d89b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  healthBase: {fileID: 5937349056267530463}
-  collider: {fileID: 5937349056267530459}
-  timeToDestroy: 1
-  startAnimationDuration: 0.2
-  startAnimationEase: 27
-  startWithAnimation: 1
-  _animationBase: {fileID: 5937349056267530457}
 --- !u!114 &5937349056267530457
 MonoBehaviour:
   m_ObjectHideFlags: 0
