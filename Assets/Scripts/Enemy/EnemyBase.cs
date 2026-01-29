@@ -18,7 +18,8 @@ namespace Enemy
     public float startAnimationDuration = .2f;
     public Ease startAnimationEase = Ease.OutBack;
     public bool startWithAnimation = true;
-    [SerializeField] private AnimationBase _animationBase;
+    public float attackDuration = 1f;
+    [SerializeField] private AnimationBase animationBase;
 
     private void Awake()
     {
@@ -50,8 +51,15 @@ namespace Enemy
       if (health != null)
       {
         health.Damage(damage);
-        PlayAnimationByTrigger(AnimationType.Attack);
+        StartCoroutine(AttackAnimation());
       }
+    }
+
+    IEnumerator AttackAnimation()
+    {
+      PlayAnimationByTrigger(AnimationType.Attack);
+      yield return new WaitForSeconds(attackDuration);
+      PlayAnimationByTrigger(AnimationType.Idle);
     }
 
     public void Damage(int amount)
@@ -68,7 +76,7 @@ namespace Enemy
 
     public void PlayAnimationByTrigger(AnimationType animationType)
     {
-      _animationBase.PlayAnimationByTrigger(animationType);
+      animationBase.PlayAnimationByTrigger(animationType);
     }
     
     #endregion

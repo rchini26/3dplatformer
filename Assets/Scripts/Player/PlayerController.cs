@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     {
         Idle,
         Walking,
-        Jumping
+        Jumping,
+        Dead
     }
 
     [Header("Components")]
@@ -42,6 +43,8 @@ public class PlayerController : MonoBehaviour
     public bool hasMovementInput => Mathf.Abs(moveInput.y) > 0.01f; // Only forward/backward counts as movement
     public bool hasRotationInput => Mathf.Abs(moveInput.x) > 0.01f; // Left/right for rotation
 
+    private HealthBase _healthBase;
+    
     private void Awake()
     {
         if (rb == null) rb = GetComponent<Rigidbody>();
@@ -53,11 +56,17 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        _healthBase = GetComponent<HealthBase>();
+        if (_healthBase != null)
+        {
+            _healthBase.OnKill += OnPlayerDeath;
+        }
         stateMachine = new StateMachine<PlayerStates>();
         stateMachine.Init();
         stateMachine.RegisterStates(PlayerStates.Idle, new PlayerIdleState(this));
         stateMachine.RegisterStates(PlayerStates.Walking, new PlayerWalkingState(this));
         stateMachine.RegisterStates(PlayerStates.Jumping, new PlayerJumpingState(this));
+        stateMachine.RegisterStates(PlayerStates.Dead, new PlayerDeadState(this));
         stateMachine.SwitchState(PlayerStates.Idle);
     }
 
@@ -65,6 +74,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdateGroundStatus();
         UpdateInput();
+        if (stateMachine.CurrentState is PlayerDeadState) return;
         stateMachine.Update();
         ApplyBetterJumping();
         
@@ -83,7 +93,12 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
-
+    
+    void OnPlayerDeath()
+    {
+        stateMachine.SwitchState(PlayerStates.Dead);
+    }
+    
     private void UpdateGroundStatus()
     {
         bool wasOnGround = isOnGround;
@@ -231,5 +246,22 @@ public class PlayerJumpingState : StateBase
     {
         // Air control - allow rotation and movement while jumping
         player.ApplyMovement();
+    }
+}
+
+// Dead State
+public class PlayerDeadState : StateBase
+{
+    private PlayerController player;
+
+    public PlayerDeadState(PlayerController player)
+    {
+        this.player = player;
+    }
+
+    public override void OnStateEnter(object o = null)
+    {
+        player.StopHorizontalMovement();
+        player.animator.SetTrigger("Death");
     }
 }

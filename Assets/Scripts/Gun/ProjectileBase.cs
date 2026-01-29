@@ -1,10 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ProjectileBase : MonoBehaviour
 {
     public float timeToDestroy = 1.5f;
     public int damageAmount = 1;
     public float projectileSpeed = 50f;
+    public List<string> tagsToHit;
     void Awake()
     {
         Destroy(gameObject, timeToDestroy);
@@ -16,8 +18,16 @@ public class ProjectileBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        var damageable = collision.gameObject.GetComponent<HealthBase>();
-        if (damageable != null) damageable.Damage(damageAmount);
-        if (!collision.gameObject.CompareTag("Projectile")) Destroy(gameObject);
+        foreach (var t in tagsToHit)
+        {
+            if (collision.transform.CompareTag(t))
+            {
+                var damageable = collision.gameObject.GetComponent<HealthBase>();
+                if (damageable != null) damageable.Damage(damageAmount);
+                if (!collision.gameObject.CompareTag("Projectile")) Destroy(gameObject);
+            }
+
+            return;
+        }
     }
 }

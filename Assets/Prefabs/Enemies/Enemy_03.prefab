@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2290962356812760893}
   - component: {fileID: 2290962356812760888}
-  - component: {fileID: 2290962356812760889}
   - component: {fileID: 2290962356812760894}
   - component: {fileID: 2290962356812760895}
   - component: {fileID: 2290962356812760892}
+  - component: {fileID: 222188651021381912}
   m_Layer: 0
   m_Name: Enemy_03
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +35,7 @@ Transform:
   - {fileID: 4044092254728486364}
   - {fileID: 2006440599576749198}
   - {fileID: 6763893498678302536}
+  - {fileID: 4403171688193309324}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57,26 +58,6 @@ MonoBehaviour:
   particleSystemHit: {fileID: 6763893498678302538}
   particleSystemDeath: {fileID: 2006440599576749196}
   _currentLife: 0
---- !u!114 &2290962356812760889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2290962356812760866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac168bcbb48b3b4bb2af34dc180d89b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  healthBase: {fileID: 2290962356812760888}
-  collider: {fileID: 2290962356812760892}
-  timeToDestroy: 1
-  startAnimationDuration: 0.2
-  startAnimationEase: 27
-  startWithAnimation: 1
-  _animationBase: {fileID: 2290962356812760895}
 --- !u!114 &2290962356812760894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,8 +104,30 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.9226074, y: 8.469744, z: 6.9992676}
-  m_Center: {x: -0.22302246, y: 3.7348723, z: -0.045639038}
+  m_Size: {x: 5.6658325, y: 8.469744, z: 6.9992676}
+  m_Center: {x: 0.14859009, y: 3.7348723, z: -0.045639038}
+--- !u!114 &222188651021381912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2290962356812760866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e79e6cc9be19e44ae544f2308ca23e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  healthBase: {fileID: 2290962356812760888}
+  collider: {fileID: 2290962356812760892}
+  timeToDestroy: 1
+  startAnimationDuration: 0.2
+  startAnimationEase: 27
+  startWithAnimation: 1
+  attackDuration: 1
+  animationBase: {fileID: 2290962356812760895}
+  gunBase: {fileID: 194478343787171340}
 --- !u!1001 &2290962356464097386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -360,6 +363,79 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 6189299705896439754, guid: 18b86b2702dd1f346a6839add43ebe78, type: 3}
   m_PrefabInstance: {fileID: 2290962357688749476}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3446579765986381741
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2290962356812760893}
+    m_Modifications:
+    - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.63000387
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1100001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.1000106
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355446440104260925, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+      propertyPath: m_Name
+      value: PFB_EnemyGun
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+--- !u!4 &4403171688193309324 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+  m_PrefabInstance: {fileID: 3446579765986381741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &194478343787171340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3271402289186341281, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
+  m_PrefabInstance: {fileID: 3446579765986381741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3a58fede5575a47b673855c15148b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4518586921743837742
 PrefabInstance:
   m_ObjectHideFlags: 0
