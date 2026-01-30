@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLife: 20
-  destroyOnKill: 0
+  destroyOnKill: 1
   delayToKill: 0.5
   flashColor: {fileID: 2856587950955406274}
   particleSystemHit: {fileID: 7327828248762332086}
@@ -131,6 +131,8 @@ MonoBehaviour:
   timeBetweenAttacks: 0.5
   projectilePrefab: {fileID: 4294386863269603967, guid: 122434240bcbcfd4d8223d94d524f5d8, type: 3}
   shootPosition: {fileID: 393137982172792026}
+  playerTarget: {fileID: 0}
+  bossActive: 0
 --- !u!1001 &493917554973216466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231,7 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1100001
+      value: 1.96
       objectReference: {fileID: 0}
     - target: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
       propertyPath: m_LocalPosition.z
