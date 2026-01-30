@@ -188,7 +188,7 @@ public abstract class PlayerGroundedState : StateBase
 
     protected abstract void HandleMovement();
 }
-
+#region State Classes
 // Idle State
 public class PlayerIdleState : PlayerGroundedState
 {
@@ -265,3 +265,4 @@ public class PlayerDeadState : StateBase
         player.animator.SetTrigger("Death");
     }
 }
+#endregion

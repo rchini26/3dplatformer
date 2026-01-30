@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2290962356812760894}
   - component: {fileID: 2290962356812760895}
   - component: {fileID: 2290962356812760892}
-  - component: {fileID: 222188651021381912}
   m_Layer: 0
   m_Name: Enemy_03
   m_TagString: Enemy
@@ -106,28 +105,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.6658325, y: 8.469744, z: 6.9992676}
   m_Center: {x: 0.14859009, y: 3.7348723, z: -0.045639038}
---- !u!114 &222188651021381912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2290962356812760866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5e79e6cc9be19e44ae544f2308ca23e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  healthBase: {fileID: 2290962356812760888}
-  collider: {fileID: 2290962356812760892}
-  timeToDestroy: 1
-  startAnimationDuration: 0.2
-  startAnimationEase: 27
-  startWithAnimation: 1
-  attackDuration: 1
-  animationBase: {fileID: 2290962356812760895}
-  gunBase: {fileID: 194478343787171340}
 --- !u!1001 &2290962356464097386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -425,17 +402,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1355446440104260897, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
   m_PrefabInstance: {fileID: 3446579765986381741}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &194478343787171340 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3271402289186341281, guid: 65fb4f594d45f4445808fdcacb75f71c, type: 3}
-  m_PrefabInstance: {fileID: 3446579765986381741}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df3a58fede5575a47b673855c15148b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4518586921743837742
 PrefabInstance:
   m_ObjectHideFlags: 0
