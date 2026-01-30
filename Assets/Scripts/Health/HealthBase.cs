@@ -2,18 +2,20 @@ using System.Collections;
 using System;
 using DG.Tweening;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class HealthBase : MonoBehaviour, IDamageable
 {
     public event Action OnKill;
-    
+    public List<UIFillerUpdater> uiHealthUpdater;
+
     public int startLife = 10;
     public bool destroyOnKill;
     public float delayToKill = .5f;
     public FlashColor flashColor;
     public ParticleSystem particleSystemHit;
     public ParticleSystem particleSystemDeath;
-    
+
     [SerializeField] private int _currentLife;
     private bool _isDead;
 
@@ -32,15 +34,16 @@ public class HealthBase : MonoBehaviour, IDamageable
         _isDead = false;
         _currentLife = startLife;
     }
-    
+
     public void Damage(int amount)
     {
-        if(_isDead) return;
-        
+        if (_isDead) return;
+
         _currentLife -= amount;
-        if(flashColor != null) flashColor.Flash();
+        UpdateUIHealth();
+        if (flashColor != null) flashColor.Flash();
         if (particleSystemHit != null) particleSystemHit.Emit(30);
-        
+
         if (_currentLife <= 0)
         {
             Kill();
@@ -53,12 +56,20 @@ public class HealthBase : MonoBehaviour, IDamageable
         if (_isDead) return;
         _isDead = true;
         DOTween.Kill(gameObject);
-         
-        OnKill?.Invoke(); 
-        
+
+        OnKill?.Invoke();
+
         if (destroyOnKill)
         {
             Destroy(gameObject, delayToKill);
+        }
+    }
+    
+    private void UpdateUIHealth()
+    {
+        if (uiHealthUpdater != null)
+        {
+            uiHealthUpdater.ForEach(i => i.UpdateValue((float)_currentLife / startLife));
         }
     }
 }
