@@ -4,44 +4,54 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAbilityBase : MonoBehaviour
+namespace Player
 {
-    protected PlayerController player;
-    
-    protected Inputs inputs;
-    private void OnValidate()
+    public class PlayerAbilityBase : MonoBehaviour
     {
-        if (player == null) player = GetComponent<PlayerController>();
-    }
+        protected PlayerController player;
 
-    private void Start()
-    {
-        inputs = new Inputs();
-        inputs.Enable();
-        
-        Init();
-        OnValidate();
-        RegisterListeners();
-    }
+        protected Inputs inputs;
 
-    private void OnEnable()
-    {
-        if (inputs != null) inputs.Enable();
-    }
-    
-    private void OnDisable()
-    {
-        inputs.Disable();
-    }
+        private void OnValidate()
+        {
+            if (player == null) player = GetComponent<PlayerController>();
+        }
 
-    private void OnDestroy()
-    {
-        UnregisterListeners();
+        private void Start()
+        {
+            inputs = new Inputs();
+            inputs.Enable();
+
+            Init();
+            OnValidate();
+            RegisterListeners();
+        }
+
+        private void OnEnable()
+        {
+            if (inputs != null) inputs.Enable();
+        }
+
+        private void OnDisable()
+        {
+            inputs.Disable();
+        }
+
+        private void OnDestroy()
+        {
+            UnregisterListeners();
+        }
+
+        protected virtual void Init()
+        {
+        }
+
+        protected virtual void RegisterListeners()
+        {
+        }
+
+        protected virtual void UnregisterListeners()
+        {
+        }
     }
-    
-    protected virtual void Init() {}
-    
-    protected virtual void RegisterListeners() {}
-    
-    protected virtual void UnregisterListeners() {}
 }

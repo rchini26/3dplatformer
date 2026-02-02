@@ -36,5 +36,7 @@ public class CheckPointBase : MonoBehaviour
     {
         if(PlayerPrefs.GetInt(checkPointKey, 0) > key)
             PlayerPrefs.SetInt(checkPointKey, key);
+
+        CheckPointManager.Instance.SaveCheckPoint(key);
     }
 }

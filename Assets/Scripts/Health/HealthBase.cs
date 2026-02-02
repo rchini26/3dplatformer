@@ -3,6 +3,7 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 using System.Collections.Generic;
+using Player;
 
 public class HealthBase : MonoBehaviour, IDamageable
 {
@@ -17,8 +18,8 @@ public class HealthBase : MonoBehaviour, IDamageable
     public ParticleSystem particleSystemDeath;
 
     [SerializeField] private int _currentLife;
-    private bool _isDead;
-
+    public bool isDead;
+    
     void Awake()
     {
         Init();
@@ -29,15 +30,15 @@ public class HealthBase : MonoBehaviour, IDamageable
         ResetLife();
     }
 
-    protected virtual void ResetLife()
+    public virtual void ResetLife()
     {
-        _isDead = false;
+        isDead = false;
         _currentLife = startLife;
     }
 
     public void Damage(int amount)
     {
-        if (_isDead) return;
+        if (isDead) return;
 
         _currentLife -= amount;
         UpdateUIHealth();
@@ -53,8 +54,8 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     private void Kill()
     {
-        if (_isDead) return;
-        _isDead = true;
+        if (isDead) return;
+        isDead = true;
         DOTween.Kill(gameObject);
 
         OnKill?.Invoke();

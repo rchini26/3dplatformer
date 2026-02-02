@@ -11,7 +11,7 @@ namespace Boss
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "Player")
+            if (boss != null && other.gameObject.tag == "Player")
             {
                 boss.SetBossActiveState(true);
             }
