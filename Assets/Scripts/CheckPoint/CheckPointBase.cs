@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CheckPointBase : MonoBehaviour
 {
+    public MeshRenderer meshRenderer;
+    public int key = 01;
+    private string checkPointKey = "CheckPointKey";
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -14,16 +18,23 @@ public class CheckPointBase : MonoBehaviour
 
     void VerifyCheckPoint()
     {
-        
+        TurnItOn();
+        SaveCheckPoint();
     }
 
     void TurnItOn()
     {
-        
+        meshRenderer.material.SetColor("_EmissionColor", Color.cyan);
     }
 
     void TurnItOff()
     {
-        
+        meshRenderer.material.SetColor("_EmissionColor", Color.gray);
+    }
+    
+    void SaveCheckPoint()
+    {
+        if(PlayerPrefs.GetInt(checkPointKey, 0) > key)
+            PlayerPrefs.SetInt(checkPointKey, key);
     }
 }
