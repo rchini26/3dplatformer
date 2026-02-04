@@ -18,8 +18,6 @@ public class CheckPointManager : Singleton<CheckPointManager>
     {
         if(i > lastCheckPointKey)
             lastCheckPointKey = i;
-        
-        
     }
 
     public Vector3 GetLastCheckPoint()

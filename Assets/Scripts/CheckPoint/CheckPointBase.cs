@@ -5,6 +5,7 @@ using UnityEngine;
 public class CheckPointBase : MonoBehaviour
 {
     public MeshRenderer meshRenderer;
+    public CheckPointMessage messageUI;
     public int key = 01;
     private string checkPointKey = "CheckPointKey";
     
@@ -25,6 +26,7 @@ public class CheckPointBase : MonoBehaviour
     void TurnItOn()
     {
         meshRenderer.material.SetColor("_EmissionColor", Color.cyan);
+        messageUI.ShowMessage("CheckPoint Activated!");
     }
 
     void TurnItOff()
