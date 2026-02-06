@@ -44,7 +44,11 @@ public class HealthBase : MonoBehaviour, IDamageable
         UpdateUIHealth();
         if (flashColor != null) flashColor.Flash();
         if (particleSystemHit != null) particleSystemHit.Emit(30);
-        EffectsManager.Instance.ChangeVignette();
+        if (GetComponent<PlayerController>() != null)
+        {
+            EffectsManager.Instance.ChangeVignette();
+            ShakeCamera.Instance.Shake(3f, 3f, 0.5f);
+        }
         
         if (_currentLife <= 0)
         {
