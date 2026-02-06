@@ -43,6 +43,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         _currentLife -= amount;
         UpdateUIHealth();
         if (flashColor != null) flashColor.Flash();
+        EffectsManager.Instance.ChangeVignette();
         if (particleSystemHit != null) particleSystemHit.Emit(30);
 
         if (_currentLife <= 0)
