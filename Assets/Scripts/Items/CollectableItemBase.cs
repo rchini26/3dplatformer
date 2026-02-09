@@ -3,42 +3,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectableItemBase : MonoBehaviour
+namespace Items
 {
-    public string compareTag = "Player";
-    public ParticleSystem particlePrefab;
-    
-    [Header("Sounds")]
-    public AudioSource audioSourcePrefab;
-    
-    
-    private void OnTriggerEnter(Collider collision)
+    public class CollectableItemBase : MonoBehaviour
     {
-        if (collision.transform.CompareTag(compareTag))
-        {
-            Collect();
-        }
-    }
+        public ItemType itemType;
+        public string compareTag = "Player";
+        public ParticleSystem particlePrefab;
 
-    protected virtual void Collect()
-    {
-        OnCollect();
-        gameObject.SetActive(false);
-    }
-    
-    protected virtual void OnCollect()
-    {
-        if (audioSourcePrefab != null)
+        [Header("Sounds")] public AudioSource audioSourcePrefab;
+
+
+        private void OnTriggerEnter(Collider collision)
         {
-            AudioSource audioSource = Instantiate(audioSourcePrefab);
-            audioSource.Play();
-            Destroy(audioSource.gameObject, audioSource.clip.length);
+            if (collision.transform.CompareTag(compareTag))
+            {
+                Collect();
+            }
         }
-        if (particlePrefab != null)
+
+        protected virtual void Collect()
         {
-            ParticleSystem particle = Instantiate(particlePrefab, transform.position, Quaternion.identity);
-            particle.Play();
-            Destroy(particle.gameObject, particle.main.duration);
+            OnCollect();
+            gameObject.SetActive(false);
+        }
+
+        protected virtual void OnCollect()
+        {
+            if (audioSourcePrefab != null)
+            {
+                AudioSource audioSource = Instantiate(audioSourcePrefab);
+                audioSource.Play();
+                Destroy(audioSource.gameObject, audioSource.clip.length);
+            }
+
+            if (particlePrefab != null)
+            {
+                ParticleSystem particle = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+                particle.Play();
+                Destroy(particle.gameObject, particle.main.duration);
+            }
+            
+            ItemManager.Instance.AddByType(itemType);
         }
     }
 }
