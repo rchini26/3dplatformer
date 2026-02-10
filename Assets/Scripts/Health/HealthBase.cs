@@ -34,6 +34,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     {
         isDead = false;
         _currentLife = startLife;
+        UpdateUIHealth();
     }
 
     public void Damage(int amount)

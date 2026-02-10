@@ -17,7 +17,7 @@ namespace Player
 
         void Update()
         {
-            if (_healthBase.isDead && Input.GetKeyDown(KeyCode.R))
+            if (_healthBase.isDead && Input.GetKeyDown(KeyCode.Q))
             {
                 Revive();
             }

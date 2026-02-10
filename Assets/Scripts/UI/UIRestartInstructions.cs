@@ -1,25 +1,44 @@
 using System.Collections;
-using System.Collections.Generic;
-using Player;
 using TMPro;
 using UnityEngine;
 
 public class UIRestartInstructions : MonoBehaviour
 {
     public HealthBase healthBase;
-    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI instructionsText;
+    public SOInt soInt;
+    public string uiInstructions;
+    public float displayDuration = 2f;
+
+    private bool hasShownInstructions;
 
     void Update()
     {
-        RespawnInstructions();
+        HealthRespawnInstructions();
+        FirstLifePackInstructions();
     }
 
-    void RespawnInstructions()
+    void HealthRespawnInstructions()
     {
-        if (healthBase.isDead)
+        if (healthBase != null && healthBase.isDead)
         {
-            healthText.text = "Press R to Restart!";
+            instructionsText.text = uiInstructions;
         }
-        else healthText.text = "";
+    }
+
+    void FirstLifePackInstructions()
+    {
+        if (soInt != null && soInt.value > 0 && !hasShownInstructions)
+        {
+            hasShownInstructions = true;
+            StartCoroutine(ShowInstructionsTemporarily());
+        }
+    }
+
+    IEnumerator ShowInstructionsTemporarily()
+    {
+        instructionsText.text = uiInstructions;
+        yield return new WaitForSeconds(displayDuration);
+        instructionsText.text = "";
     }
 }

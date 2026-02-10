@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Core.StateMachine;
-using UnityEngine.Serialization;
+using Core.Singleton;
 
 namespace Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : Singleton<PlayerController>
     {
         public enum PlayerStates
         {
@@ -42,7 +40,7 @@ namespace Player
 
         private HealthBase _healthBase;
 
-        private void Awake()
+        protected override void Awake()
         {
             if (rb == null) rb = GetComponent<Rigidbody>();
             if (animator == null) animator = GetComponent<Animator>();

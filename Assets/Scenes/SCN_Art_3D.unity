@@ -1473,6 +1473,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176089736}
   m_CullTransparentMesh: 1
+--- !u!1 &222007539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 222007540}
+  - component: {fileID: 222007541}
+  - component: {fileID: 222007542}
+  m_Layer: 0
+  m_Name: LifePackAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &222007540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222007539}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1069762469}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &222007541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222007539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d108ae05a0cabf146aee1bc8b08eaa9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCode: 114
+  soInt: {fileID: 11400000, guid: f3ecd629a09c3dc479a240e9098238ae, type: 2}
+--- !u!114 &222007542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222007539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7da1e2189d4454197d23b4a7481dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBase: {fileID: 0}
+  instructionsText: {fileID: 2069937774}
+  soInt: {fileID: 11400000, guid: f3ecd629a09c3dc479a240e9098238ae, type: 2}
+  uiInstructions: Press R to Recover Life
+  displayDuration: 2
 --- !u!1001 &226622307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4303,7 +4366,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBase: {fileID: 725688612}
-  healthText: {fileID: 2069937774}
+  instructionsText: {fileID: 2069937774}
+  soInt: {fileID: 0}
+  uiInstructions: Press Q to Restart!
+  displayDuration: 2
 --- !u!1001 &728736090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6855,6 +6921,7 @@ Transform:
   - {fileID: 1089297162}
   - {fileID: 492018771}
   - {fileID: 1507759354}
+  - {fileID: 1069762469}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7031,6 +7098,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026714704}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1069762468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1069762469}
+  m_Layer: 0
+  m_Name: Actions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1069762469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069762468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 222007540}
+  m_Father: {fileID: 1007189262}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089297160
 GameObject:
   m_ObjectHideFlags: 0
@@ -11261,6 +11359,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 163434224}
     m_Modifications:
+    - target: {fileID: 977738517, guid: 89e20167823a30d459856414377997d1, type: 3}
+      propertyPath: healthBase
+      value: 
+      objectReference: {fileID: 725688612}
     - target: {fileID: 469013886980955072, guid: 89e20167823a30d459856414377997d1, type: 3}
       propertyPath: delayToKill
       value: 2
