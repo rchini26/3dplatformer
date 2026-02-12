@@ -1,4 +1,3 @@
-using System.Collections;
 using System;
 using DG.Tweening;
 using UnityEngine;
@@ -8,6 +7,7 @@ using Player;
 public class HealthBase : MonoBehaviour, IDamageable
 {
     public event Action OnKill;
+    public event Action<HealthBase> OnDamage;
     public List<UIFillerUpdater> uiHealthUpdater;
 
     public int startLife = 10;
@@ -42,6 +42,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         if (isDead) return;
 
         _currentLife -= amount;
+        OnDamage?.Invoke(this);
         UpdateUIHealth();
         if (flashColor != null) flashColor.Flash();
         if (particleSystemHit != null) particleSystemHit.Emit(30);
@@ -50,7 +51,7 @@ public class HealthBase : MonoBehaviour, IDamageable
             EffectsManager.Instance.ChangeVignette();
             ShakeCamera.Instance.Shake(3f, 3f, 0.5f);
         }
-        
+
         if (_currentLife <= 0)
         {
             Kill();
