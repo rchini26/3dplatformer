@@ -1,6 +1,8 @@
 using UnityEngine;
 using Core.StateMachine;
 using Core.Singleton;
+using System.Collections;
+using Clothes;
 
 namespace Player
 {
@@ -14,23 +16,31 @@ namespace Player
             Dead
         }
 
-        [Header("Components")] public Rigidbody rb;
+        [Header("Components")] 
+        public Rigidbody rb;
         public Animator animator;
 
-        [Header("Movement Settings")] public float moveSpeed = 5f;
+        [Header("Movement Settings")] 
+        public float moveSpeed = 5f;
         public float rotationSpeed = 180f; // Degrees per second
         public float jumpForce = 10f;
 
-        [Header("Ground Check")] public Transform groundCheck;
+        [Header("Ground Check")] 
+        public Transform groundCheck;
         public float groundCheckRadius = 0.2f;
         public LayerMask groundLayer;
-
-        [Header("Gravity for Better Jumping")] public float fallMultiplier = 5f; // Faster fall
-
-        [Header("Run Setup")] public KeyCode runKey = KeyCode.LeftShift;
-        public float runSpeed = 1.5f;
-
         public bool isOnGround { get; private set; }
+        
+        [Header("Gravity for Better Jumping")] 
+        public float fallMultiplier = 5f; // Faster fall
+
+        [Header("Run Setup")] 
+        public KeyCode runKey = KeyCode.LeftShift;
+        public float runSpeed = 1.5f;
+        
+        [Space]
+        [SerializeField]
+        private ClothChanger _clothChanger;
         public StateMachine<PlayerStates> stateMachine;
 
         // Cached input values
@@ -160,6 +170,31 @@ namespace Player
             {
                 rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }
+        }
+
+        public void ChangeSpeed(float speed, float duration)
+        {
+            StartCoroutine(ChangeSpeedCoroutine(speed, duration));
+        }
+
+        IEnumerator ChangeSpeedCoroutine(float localSpeed, float duration)
+        {
+            var defaultSpeed = moveSpeed;
+            moveSpeed = localSpeed;
+            yield return new WaitForSeconds(duration);
+            moveSpeed = defaultSpeed;
+        }
+        
+        public void ChangeTexture(ClothSetup clothSetup, float duration)
+        {
+            StartCoroutine(ChangeTextureCoroutine(clothSetup, duration));
+        }
+
+        IEnumerator ChangeTextureCoroutine(ClothSetup clothSetup, float duration)
+        {
+            _clothChanger.ChangeTexture(clothSetup);
+            yield return new WaitForSeconds(duration);
+            _clothChanger.ResetTexture();
         }
 
         #endregion
