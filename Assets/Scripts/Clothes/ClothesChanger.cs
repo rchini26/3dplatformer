@@ -12,16 +12,20 @@ namespace Clothes
         public string shaderIdName = "_EmissionMap";
         
         private Texture2D _defaultTexture;
+        public List<ClothesSetup> clothesSetups;
 
         private void Awake()
         {
             _defaultTexture = (Texture2D) skinnedMeshRenderer.materials[0].GetTexture(shaderIdName);
         }
-
-        [NaughtyAttributes.Button]
-        void ChangeTexture()
+        
+        void ChangeTexture(ClothesType clothType)
         {
-            skinnedMeshRenderer.materials[0].SetTexture(shaderIdName, texture);
+            var setup = clothesSetups.Find(i => i.clothesType == clothType);
+            if (setup != null)
+            {
+                skinnedMeshRenderer.materials[0].SetTexture(shaderIdName, setup.texture);
+            }
         }
 
         public void ChangeTexture(ClothesSetup setup)

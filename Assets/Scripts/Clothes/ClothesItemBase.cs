@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Player;
 using UnityEngine;
 
@@ -10,8 +8,9 @@ namespace Clothes
         public ClothesType clothType;
         public string compareTag = "Player";
         public float duration = 2f;
+        public ClothesUiMessage messageUI;
 
-        void OnTriggerEnter(Collider collision)
+        public virtual void OnTriggerEnter(Collider collision)
         {
             if (collision.transform.CompareTag(compareTag))
             {
@@ -19,7 +18,7 @@ namespace Clothes
             }
         }
 
-        public virtual void Collect()
+        protected virtual void Collect()
         {
             var setup = ClothesManager.Instance.GetClothesSetup(clothType);
             PlayerController.Instance.ChangeTexture(setup, duration);

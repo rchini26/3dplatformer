@@ -7,7 +7,9 @@ namespace Clothes
 {
     public enum ClothesType
     {
+        Basic,
         Speed,
+        Jump
     }
     public class ClothesManager : Singleton<ClothesManager>
     {

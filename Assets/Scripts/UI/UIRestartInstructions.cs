@@ -10,7 +10,7 @@ public class UIRestartInstructions : MonoBehaviour
     public string uiInstructions;
     public float displayDuration = 2f;
 
-    private bool hasShownInstructions;
+    private bool _hasShownInstructions;
 
     void Update()
     {
@@ -28,9 +28,9 @@ public class UIRestartInstructions : MonoBehaviour
 
     void FirstLifePackInstructions()
     {
-        if (soInt != null && soInt.value > 0 && !hasShownInstructions)
+        if (soInt != null && soInt.value > 0 && !_hasShownInstructions)
         {
-            hasShownInstructions = true;
+            _hasShownInstructions = true; 
             StartCoroutine(ShowInstructionsTemporarily());
         }
     }
@@ -38,7 +38,9 @@ public class UIRestartInstructions : MonoBehaviour
     IEnumerator ShowInstructionsTemporarily()
     {
         instructionsText.text = uiInstructions;
+        
         yield return new WaitForSeconds(displayDuration);
-        instructionsText.text = "";
+        
+        instructionsText.enabled = false;
     }
 }

@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CheckPointMessage : MonoBehaviour
+public class CheckPointUiMessage : MonoBehaviour
 {
     public TextMeshProUGUI messageText;   
-    public float displayDuration = 2f;    
+    public float displayDuration = 2f;
+    
+    private Coroutine _currentCoroutine;
 
     public void ShowMessage(string msg)
     {
-        StartCoroutine(ShowMessageRoutine(msg));
+        if (_currentCoroutine != null)
+        {
+            StopCoroutine(_currentCoroutine);
+        }
+        _currentCoroutine = StartCoroutine(ShowMessageRoutine(msg));
     }
 
     private IEnumerator ShowMessageRoutine(string msg)
@@ -21,5 +27,6 @@ public class CheckPointMessage : MonoBehaviour
         yield return new WaitForSeconds(displayDuration);
 
         messageText.enabled = false;
+        _currentCoroutine = null;
     }
 }

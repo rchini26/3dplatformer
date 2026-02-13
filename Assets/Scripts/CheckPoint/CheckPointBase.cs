@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheckPointBase : MonoBehaviour
 {
     public MeshRenderer meshRenderer;
-    public CheckPointMessage messageUI;
+    public CheckPointUiMessage messageUI;
     public int key = 01;
     private string checkPointKey = "CheckPointKey";
     

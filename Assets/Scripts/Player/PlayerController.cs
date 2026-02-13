@@ -3,6 +3,7 @@ using Core.StateMachine;
 using Core.Singleton;
 using System.Collections;
 using Clothes;
+using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -39,8 +40,7 @@ namespace Player
         public float runSpeed = 1.5f;
         
         [Space]
-        [SerializeField]
-        private ClothesChanger _clothChanger;
+        [SerializeField] private ClothesChanger _clothesChanger;
         public StateMachine<PlayerStates> stateMachine;
 
         // Cached input values
@@ -185,6 +185,19 @@ namespace Player
             moveSpeed = defaultSpeed;
         }
         
+        public void ChangeJumpForce(float jumpForce, float duration)
+        {
+            StartCoroutine(ChangeJumpForceCoroutine(jumpForce, duration));
+        }
+
+        IEnumerator ChangeJumpForceCoroutine(float localJumpForce, float duration)
+        {
+            var defaultJumpForce = jumpForce;
+            jumpForce = localJumpForce;
+            yield return new WaitForSeconds(duration);
+            jumpForce = defaultJumpForce;
+        }
+        
         public void ChangeTexture(ClothesSetup clothSetup, float duration)
         {
             StartCoroutine(ChangeTextureCoroutine(clothSetup, duration));
@@ -192,9 +205,9 @@ namespace Player
 
         IEnumerator ChangeTextureCoroutine(ClothesSetup clothSetup, float duration)
         {
-            _clothChanger.ChangeTexture(clothSetup);
+            _clothesChanger.ChangeTexture(clothSetup);
             yield return new WaitForSeconds(duration);
-            _clothChanger.ResetTexture();
+            _clothesChanger.ResetTexture();
         }
 
         #endregion

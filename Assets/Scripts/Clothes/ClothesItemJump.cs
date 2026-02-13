@@ -1,20 +1,21 @@
-using Player;
 using UnityEngine;
+using Player;
 
 namespace Clothes
 {
-    public class ClothesItemSpeed : ClothesItemBase
+    public class ClothesItemJump : ClothesItemBase
     {
-        public float targetSpeed = 2f;
+        public float targetJumpForce = 20f;
+        
         protected override void Collect()
         {
             base.Collect();
-            PlayerController.Instance.ChangeSpeed(targetSpeed, duration);
+            PlayerController.Instance.ChangeJumpForce(targetJumpForce, duration);
         }
 
         public override void OnTriggerEnter(Collider other)
         {
-            messageUI.ShowMessage("Super Speed");
+            messageUI.ShowMessage("Super Jump");
             base.OnTriggerEnter(other);
         }
     }
