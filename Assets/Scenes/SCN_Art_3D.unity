@@ -776,8 +776,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 0
-  m_FrequencyGain: 0
+  m_AmplitudeGain: 3
+  m_FrequencyGain: 3
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &118177518
 PrefabInstance:
@@ -15978,6 +15978,10 @@ PrefabInstance:
       propertyPath: messageText
       value: 
       objectReference: {fileID: 748846799}
+    - target: {fileID: 9114410775839019078, guid: 0af79076737ebdc47af44debee83467d, type: 3}
+      propertyPath: targetSpeed
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0af79076737ebdc47af44debee83467d, type: 3}
 --- !u!1001 &7426574995428428421
