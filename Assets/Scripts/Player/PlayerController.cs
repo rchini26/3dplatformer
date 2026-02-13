@@ -40,7 +40,7 @@ namespace Player
         
         [Space]
         [SerializeField]
-        private ClothChanger _clothChanger;
+        private ClothesChanger _clothChanger;
         public StateMachine<PlayerStates> stateMachine;
 
         // Cached input values
@@ -185,12 +185,12 @@ namespace Player
             moveSpeed = defaultSpeed;
         }
         
-        public void ChangeTexture(ClothSetup clothSetup, float duration)
+        public void ChangeTexture(ClothesSetup clothSetup, float duration)
         {
             StartCoroutine(ChangeTextureCoroutine(clothSetup, duration));
         }
 
-        IEnumerator ChangeTextureCoroutine(ClothSetup clothSetup, float duration)
+        IEnumerator ChangeTextureCoroutine(ClothesSetup clothSetup, float duration)
         {
             _clothChanger.ChangeTexture(clothSetup);
             yield return new WaitForSeconds(duration);

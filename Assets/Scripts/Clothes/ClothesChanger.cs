@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Clothes
 {
-    public class ClothChanger : MonoBehaviour
+    public class ClothesChanger : MonoBehaviour
     {
         public SkinnedMeshRenderer skinnedMeshRenderer;
         public Texture2D texture;
@@ -24,7 +24,7 @@ namespace Clothes
             skinnedMeshRenderer.materials[0].SetTexture(shaderIdName, texture);
         }
 
-        public void ChangeTexture(ClothSetup setup)
+        public void ChangeTexture(ClothesSetup setup)
         {
             skinnedMeshRenderer.materials[0].SetTexture(shaderIdName, setup.texture);
         }

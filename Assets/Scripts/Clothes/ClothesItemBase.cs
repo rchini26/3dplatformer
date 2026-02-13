@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace Clothes
 {
-    public class ClothItemBase : MonoBehaviour
+    public class ClothesItemBase : MonoBehaviour
     {
-        public ClothType clothType;
+        public ClothesType clothType;
         public string compareTag = "Player";
         public float duration = 2f;
 
@@ -21,7 +21,7 @@ namespace Clothes
 
         public virtual void Collect()
         {
-            var setup = ClothManager.Instance.GetClothSetup(clothType);
+            var setup = ClothesManager.Instance.GetClothesSetup(clothType);
             PlayerController.Instance.ChangeTexture(setup, duration);
             HideObject();
         }

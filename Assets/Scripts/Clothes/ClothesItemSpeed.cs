@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Clothes
 {
-    public class ClothItemSpeed : ClothItemBase
+    public class ClothesItemSpeed : ClothesItemBase
     {
         public float targetSpeed = 2f;
         public override void Collect()
