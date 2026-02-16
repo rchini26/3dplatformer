@@ -6,41 +6,24 @@ public class UIRestartInstructions : MonoBehaviour
 {
     public HealthBase healthBase;
     public TextMeshProUGUI instructionsText;
-    public SOInt soInt;
     public string uiInstructions;
-    public float displayDuration = 2f;
-
-    private bool _hasShownInstructions;
+    
 
     void Update()
     {
         HealthRespawnInstructions();
-        FirstLifePackInstructions();
     }
 
     void HealthRespawnInstructions()
     {
         if (healthBase != null && healthBase.isDead)
         {
+            instructionsText.enabled = true;
             instructionsText.text = uiInstructions;
         }
-    }
-
-    void FirstLifePackInstructions()
-    {
-        if (soInt != null && soInt.value > 0 && !_hasShownInstructions)
+        else if (healthBase != null && !healthBase.isDead)
         {
-            _hasShownInstructions = true; 
-            StartCoroutine(ShowInstructionsTemporarily());
+            instructionsText.enabled = false;
         }
-    }
-
-    IEnumerator ShowInstructionsTemporarily()
-    {
-        instructionsText.text = uiInstructions;
-        
-        yield return new WaitForSeconds(displayDuration);
-        
-        instructionsText.enabled = false;
     }
 }
