@@ -11,13 +11,14 @@ public class FlashColor : MonoBehaviour
     [Header("Setup")]
     public Color color = Color.red;
     public float duration = .1f;
+    public string colorParameter = "_EmissionColor";
     
     private Color _defaultColor;
     private Tween _currentTween;
 
     private void Start()
     {
-        _defaultColor = meshRenderer.material.GetColor("_EmissionColor");
+        _defaultColor = meshRenderer.material.GetColor(colorParameter);
     }
 
     [NaughtyAttributes.Button]
@@ -25,7 +26,7 @@ public class FlashColor : MonoBehaviour
     {
         if (!_currentTween.IsActive())
         {
-            _currentTween = meshRenderer.material.DOColor(color, "_EmissionColor", duration).SetLoops(2, LoopType.Yoyo);   
+            _currentTween = meshRenderer.material.DOColor(color, colorParameter, duration).SetLoops(2, LoopType.Yoyo);   
         }
     }
 }
