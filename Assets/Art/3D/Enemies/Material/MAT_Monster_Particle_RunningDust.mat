@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_Monster_Particle_SpaceDust
+  m_Name: MAT_Monster_Particle_RunningDust
   m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_ShaderKeywords: _ALPHABLEND_ON _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -72,7 +72,7 @@ Material:
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0
     - _DstBlend: 10
-    - _EmissionEnabled: 1
+    - _EmissionEnabled: 0
     - _FlipbookMode: 0
     - _GlossMapScale: 0.559
     - _Glossiness: 0.725
@@ -92,8 +92,8 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.33567518, g: 0.21804914, b: 0.9433962, a: 0.49019608}
+    - _Color: {r: 0.72169816, g: 0.76353544, b: 0.9622642, a: 0.49019608}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 0.18745564, g: 0.04387683, b: 0.5471698, a: 1}
+    - _EmissionColor: {r: 0.383811, g: 0.3939177, b: 0.7075472, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
