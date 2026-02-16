@@ -118,6 +118,7 @@ namespace Player
             // Auto-transition when landing
             if (!wasOnGround && isOnGround && stateMachine.CurrentState is PlayerJumpingState)
             {
+                animator.SetTrigger("Land"); 
                 stateMachine.SwitchState(hasMovementInput ? PlayerStates.Walking : PlayerStates.Idle);
             }
         }
@@ -159,6 +160,7 @@ namespace Player
 
         public void Jump()
         {
+            animator.SetTrigger("Jump");
             Vector3 velocity = rb.velocity;
             velocity.y = jumpForce;
             rb.velocity = velocity;
