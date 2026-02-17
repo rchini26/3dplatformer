@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Animation;
+using UnityEngine.Events;
 
 namespace Enemy
 {
@@ -11,7 +11,7 @@ namespace Enemy
     [Header("Enemy Health")]
     public int damage = 10;
     public HealthBase healthBase;
-    public Collider collider;
+    public Collider newCollider;
     
     [Header("Animation Setup")]
     public float timeToDestroy = 1f;
@@ -20,6 +20,9 @@ namespace Enemy
     public bool startWithAnimation = true;
     public float attackDuration = 1f;
     [SerializeField] private AnimationBase animationBase;
+    
+    [Header("Events")]
+    public UnityEvent OnKillEvent;
 
     private void Awake()
     {
@@ -39,9 +42,10 @@ namespace Enemy
     protected virtual void OnEnemyKill()
     {
       healthBase.OnKill -= OnEnemyKill;
-      if(collider != null) collider.enabled = false;
+      if(newCollider != null) newCollider.enabled = false;
       PlayAnimationByTrigger(AnimationType.Death);
       Destroy(gameObject, timeToDestroy);
+      OnKillEvent?.Invoke();
     }
 
     protected virtual void OnCollisionEnter(Collision collision)

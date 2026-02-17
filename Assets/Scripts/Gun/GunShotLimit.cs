@@ -14,7 +14,7 @@ public class GunShotLimit : GunBase
     private int _currentShots;
     private bool _recharging;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         GetGunUIUpdater();
     }
@@ -67,22 +67,20 @@ public class GunShotLimit : GunBase
         _currentShots = 0;
         _recharging = false;
     }
-
-    void UpdateUI()
+    
+    public void UpdateUI()
     {
-        uiGunUpdater.ForEach(x => x.UpdateValue(maxShots, _currentShots));
+        if (uiGunUpdater != null && uiGunUpdater.Count > 0)
+        {
+            uiGunUpdater.ForEach(x => x.UpdateValue(maxShots, _currentShots));
+        }
     }
 
-    void GetGunUIUpdater()
+    public void GetGunUIUpdater()
     {
-        var gunUI = GameObject.Find("GunUpdater");
-        if (gunUI != null)
-        {
-            uiGunUpdater = gunUI.GetComponents<UIFillerUpdater>().ToList();
-        }
-        else
-        {
-            uiGunUpdater = new List<UIFillerUpdater>();
-        }
+        UIFillerUpdater[] updaters = FindObjectsOfType<UIFillerUpdater>();
+        uiGunUpdater = updaters
+            .Where(u => u.updaterType == UIUpdaterType.Gun)
+            .ToList();
     }
 }

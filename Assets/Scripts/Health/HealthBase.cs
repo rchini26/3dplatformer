@@ -3,6 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using System.Collections.Generic;
 using Player;
+using System.Linq;
 
 public class HealthBase : MonoBehaviour, IDamageable
 {
@@ -25,9 +26,34 @@ public class HealthBase : MonoBehaviour, IDamageable
         Init();
     }
 
+    void OnEnable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        FindUIUpdaters();
+        UpdateUIHealth();
+    }
+
     void Init()
     {
+        FindUIUpdaters();
         ResetLife();
+    }
+
+    void FindUIUpdaters()
+    {
+        UIFillerUpdater[] updaters = FindObjectsOfType<UIFillerUpdater>();
+        uiHealthUpdater = updaters
+            .Where(u => u.updaterType == UIUpdaterType.Health)
+            .ToList();
     }
 
     public virtual void ResetLife()
@@ -75,7 +101,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     
     private void UpdateUIHealth()
     {
-        if (uiHealthUpdater != null)
+        if (uiHealthUpdater != null && CompareTag("Player"))
         {
             uiHealthUpdater.ForEach(i => i.UpdateValue((float)_currentLife / startLife));
         }

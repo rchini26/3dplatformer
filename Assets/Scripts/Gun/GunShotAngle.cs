@@ -7,6 +7,11 @@ public class GunShotAngle : GunShotLimit
     public int amountPerShot = 4;
     public float angle = 15f;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     public override void Shoot()
     {
         int multiplier = 0;

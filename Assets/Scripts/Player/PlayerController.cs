@@ -53,6 +53,7 @@ namespace Player
         protected override void Awake()
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
             if (rb == null) rb = GetComponent<Rigidbody>();
             if (animator == null) animator = GetComponent<Animator>();
 

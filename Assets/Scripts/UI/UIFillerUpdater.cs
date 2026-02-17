@@ -4,11 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+public enum UIUpdaterType
+{
+    Health,
+    Gun
+}
+
 public class UIFillerUpdater : MonoBehaviour
 {
     public Image uiImage;
-    
-    [Header("Animation")] 
+    public UIUpdaterType updaterType = UIUpdaterType.Health;
+
+    [Header("Animation")]
     public float duration = .1f;
     public Ease ease = Ease.OutBack;
     
