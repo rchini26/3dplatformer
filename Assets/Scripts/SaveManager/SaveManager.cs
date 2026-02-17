@@ -62,6 +62,9 @@ public class SaveManager : Singleton<SaveManager>
     
     private void SaveFile(string json)
     {
+        string fileLoaded = "";
+        if (File.Exists(_path)) fileLoaded = File.ReadAllText(_path);
+        
         File.WriteAllText(_path, json);
     }
 
@@ -73,16 +76,7 @@ public class SaveManager : Singleton<SaveManager>
         {
             fileLoaded = File.ReadAllText(_path);
             _saveSetup = JsonUtility.FromJson<SaveSetup>(fileLoaded);
-
-            if (_saveSetup == null)
-            {
-                CreateNewSave();
-                Save();
-            }
-            else
-            {
-                lastLevel = _saveSetup.lastLevel;
-            }
+            lastLevel = _saveSetup.lastLevel;
         }
         else
         {
