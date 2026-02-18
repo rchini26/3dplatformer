@@ -5,6 +5,8 @@ using Player;
 public class ChestBase : MonoBehaviour
 {
     public Animator animator;
+    public LoadSceneHelper loadSceneHelper;
+    public int levelToLoad = 2;
     
     [Header("Open Chest Setup")]
     public string triggerName = "OpenChest";
@@ -38,6 +40,11 @@ public class ChestBase : MonoBehaviour
         _openChest = true;
         HideNotification();
         chestItem.ShowItem();
+
+        if (loadSceneHelper != null)
+        {
+            loadSceneHelper.LoadLevel(levelToLoad);
+        }
     }
 
     public void OnTriggerEnter(Collider other)

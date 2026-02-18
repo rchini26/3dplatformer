@@ -14,11 +14,16 @@ public class SaveManager : Singleton<SaveManager>
     public int lastLevel;
     public Action<SaveSetup> FileLoaded;
 
+    public SaveSetup SaveSetup
+    {
+        get { return _saveSetup; }
+    }
+
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
-        _path = Application.dataPath + "/save.txt";
+        _path = Application.streamingAssetsPath + "/save.json";
     }
 
     void CreateNewSave()

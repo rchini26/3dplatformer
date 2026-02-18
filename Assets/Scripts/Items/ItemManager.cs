@@ -21,6 +21,11 @@ namespace Items
             Reset();
         }
 
+        void OnEnable()
+        {
+            LoadItemsFromSave();
+        }
+
         void Reset()
         {
             foreach (var i in itemSetups)
@@ -28,6 +33,13 @@ namespace Items
                 i.soInt.value = 0;
             }
         }
+
+        public void LoadItemsFromSave()
+        {
+            AddByType(ItemType.Coin, SaveManager.Instance.SaveSetup.coins);
+            AddByType(ItemType.LifePack, SaveManager.Instance.SaveSetup.lifePack);
+        }
+        
         public ItemSetup GetItemByType(ItemType itemType)
         {
             return itemSetups.Find(i => i.itemType == itemType);
