@@ -7285,7 +7285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiImage: {fileID: 1309175759}
-  updaterType: 0
+  updaterType: 1
   duration: 0.1
   ease: 1
 --- !u!114 &1309175759

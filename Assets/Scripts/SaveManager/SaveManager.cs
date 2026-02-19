@@ -22,7 +22,6 @@ public class SaveManager : Singleton<SaveManager>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(gameObject);
         _path = Application.streamingAssetsPath + "/save.json";
     }
 

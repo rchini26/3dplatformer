@@ -21,13 +21,20 @@ namespace Items
             Reset();
         }
         
-        protected override void Awake()
-        {
-            base.Awake();
-            DontDestroyOnLoad(gameObject);
-        }
-        
         void OnEnable()
+        {
+            SaveManager.Instance.FileLoaded += OnFileLoaded;
+        }
+
+        void OnDisable()
+        {
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.FileLoaded -= OnFileLoaded;
+            }
+        }
+
+        private void OnFileLoaded(SaveSetup saveSetup)
         {
             LoadItemsFromSave();
         }
@@ -42,6 +49,8 @@ namespace Items
 
         public void LoadItemsFromSave()
         {
+            if (SaveManager.Instance == null || SaveManager.Instance.SaveSetup == null) return;
+
             SetByType(ItemType.Coin, SaveManager.Instance.SaveSetup.coins);
             SetByType(ItemType.LifePack, SaveManager.Instance.SaveSetup.lifePack);
         }
