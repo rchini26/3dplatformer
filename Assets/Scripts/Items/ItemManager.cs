@@ -49,11 +49,15 @@ namespace Items
         {
             if (amount < 0) return;
             itemSetups.Find(i => i.itemType == itemType).soInt.value += amount;
+            
+            SaveManager.Instance.SaveItems();
         }
 
         public void RemoveByType(ItemType itemType, int amount = 1)
         {
             itemSetups.Find(i => i.itemType == itemType).soInt.value -= amount;
+            
+            SaveManager.Instance.SaveItems();
         }
 
         private void AddCoins()
