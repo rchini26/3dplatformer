@@ -20,7 +20,13 @@ namespace Items
         {
             Reset();
         }
-
+        
+        protected override void Awake()
+        {
+            base.Awake();
+            DontDestroyOnLoad(gameObject);
+        }
+        
         void OnEnable()
         {
             LoadItemsFromSave();
@@ -36,13 +42,18 @@ namespace Items
 
         public void LoadItemsFromSave()
         {
-            AddByType(ItemType.Coin, SaveManager.Instance.SaveSetup.coins);
-            AddByType(ItemType.LifePack, SaveManager.Instance.SaveSetup.lifePack);
+            SetByType(ItemType.Coin, SaveManager.Instance.SaveSetup.coins);
+            SetByType(ItemType.LifePack, SaveManager.Instance.SaveSetup.lifePack);
         }
         
         public ItemSetup GetItemByType(ItemType itemType)
         {
             return itemSetups.Find(i => i.itemType == itemType);
+        }
+        
+        public void SetByType(ItemType itemType, int amount)
+        {
+            GetItemByType(itemType).soInt.value = amount;
         }
         
         public void AddByType(ItemType itemType, int amount = 1)
