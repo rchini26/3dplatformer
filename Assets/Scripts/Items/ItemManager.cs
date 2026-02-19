@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core.Singleton;
-using TMPro;
 
 namespace Items
 {
@@ -16,11 +14,13 @@ namespace Items
     {
         public List<ItemSetup> itemSetups;
 
-        void Start()
+        protected override void Awake()
         {
+            base.Awake();
+            
             Reset();
         }
-        
+
         void OnEnable()
         {
             SaveManager.Instance.FileLoaded += OnFileLoaded;

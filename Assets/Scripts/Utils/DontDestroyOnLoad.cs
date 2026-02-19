@@ -5,7 +5,7 @@ using Core.Singleton;
 
 public class DontDestroyOnLoad : Singleton<DontDestroyOnLoad>
 {
-    void Awake()
+    protected override void Awake()
     {
         if (Instance == null)
         {
