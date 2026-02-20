@@ -48,7 +48,7 @@ MonoBehaviour:
   itemType: 1
   compareTag: Player
   particlePrefab: {fileID: 0}
-  audioSourcePrefab: {fileID: 0}
+  sfxType: 1
 --- !u!135 &3987368627899407472
 SphereCollider:
   m_ObjectHideFlags: 0

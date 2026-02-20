@@ -3440,6 +3440,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1039373619}
     m_Modifications:
+    - target: {fileID: 5683838620520456912, guid: a7c3966e28e270b419a9360abe31fe04, type: 3}
+      propertyPath: sfxType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6086700956394390204, guid: a7c3966e28e270b419a9360abe31fe04, type: 3}
       propertyPath: messageText
       value: 
@@ -7048,6 +7052,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1039373619}
     m_Modifications:
+    - target: {fileID: 1806641644, guid: 3ffcc895deb5a114588f26f99c87f81b, type: 3}
+      propertyPath: sfxType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1916637167935968808, guid: 3ffcc895deb5a114588f26f99c87f81b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -18410,6 +18418,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1039373619}
     m_Modifications:
+    - target: {fileID: 5683838620520456912, guid: a7c3966e28e270b419a9360abe31fe04, type: 3}
+      propertyPath: sfxType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6086700956394390204, guid: a7c3966e28e270b419a9360abe31fe04, type: 3}
       propertyPath: messageText
       value: 
@@ -18727,6 +18739,10 @@ PrefabInstance:
       propertyPath: messageText
       value: 
       objectReference: {fileID: 748846799}
+    - target: {fileID: 9114410775839019078, guid: 0af79076737ebdc47af44debee83467d, type: 3}
+      propertyPath: sfxType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9114410775839019078, guid: 0af79076737ebdc47af44debee83467d, type: 3}
       propertyPath: targetSpeed
       value: 25

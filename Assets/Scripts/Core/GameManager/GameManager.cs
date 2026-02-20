@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core.Singleton;
 using Core.StateMachine;
-using UnityEditorInternal;
 
 public class GameManager : Singleton<GameManager>
 {

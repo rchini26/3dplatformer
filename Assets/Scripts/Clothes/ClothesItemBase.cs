@@ -9,6 +9,9 @@ namespace Clothes
         public string compareTag = "Player";
         public float duration = 2f;
         public ClothesUiMessage messageUI;
+        
+        [Header("Sounds")]
+        public SFXType sfxType;
 
         public virtual void OnTriggerEnter(Collider collision)
         {
@@ -20,6 +23,7 @@ namespace Clothes
 
         protected virtual void Collect()
         {
+            AudioManager.Instance.PlaySFXByType(sfxType);
             var setup = ClothesManager.Instance.GetClothesSetup(clothType);
             PlayerController.Instance.ChangeTexture(setup, duration);
             HideObject();

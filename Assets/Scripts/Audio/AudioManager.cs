@@ -36,8 +36,8 @@ public class AudioManager : Singleton<AudioManager>
 
 public enum MusicType
 {
-    Type01,
-    Type02
+    Level,
+    Menu
 }
 
 [System.Serializable]
@@ -49,8 +49,11 @@ public class MusicSetup
 
 public enum SFXType
 {
-    Type01,
-    Type02
+    Coin,
+    LifePack,
+    JumpClothes,
+    SpeedClothes,
+    BaseClothes
 }
 
 [System.Serializable]

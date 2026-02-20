@@ -113,6 +113,7 @@ MonoBehaviour:
   compareTag: Player
   duration: 3
   messageUI: {fileID: 1916637167935968853}
+  sfxType: 0
 --- !u!1 &1916637167935968809
 GameObject:
   m_ObjectHideFlags: 0
